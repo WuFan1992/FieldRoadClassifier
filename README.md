@@ -13,10 +13,11 @@ This project is based on the challenge to classify the road and field with a ver
    [3x60x60] -> Conv -> [4x60x60] -> Maxpooling -> [4x30x30] -> Conv -> [8x30x30] -> Maxpooling -> [8x15x15] -> Conv (stride = 2) -> [16x8x8]  -> Flatten -> [1x1024] -> fully-connected -> [1024x2]
    
    Decoder
-   [2x1024]    -> Unflatten -> [1x1024] ->  Unflatten -> [16x8x8] ->  Transposed Conv(stride = 2) -> [8x15x15] -> Transposed  Conv + Upsampling -> [4x30x30]  -> Transposed Conv + Upsampling -> [3x60x60]
+   [2x1024]    -> Conv -> [1x1024] ->  Unflatten -> [16x8x8] ->  Transposed Conv(stride = 2) -> [8x15x15] -> Transposed  Conv + Upsampling -> [4x30x30]  -> Transposed Conv + Upsampling -> [3x60x60]
     
 ## Structure of Projet
 
+'
 FieldRoadClassifier/
     dataset/
         fields/
@@ -40,4 +41,24 @@ FieldRoadClassifier/
     test.py
     train.py
     
+'
+A pretrained model can be found in /cache/ which give the same results as the following "Results" parts shows 
+
+## Set Environment
+Make sure that you download the latest version of pytorch (at least version 1.20)
+'pip3 install pytorch'
+
+The following hyperparameters can be modified inside the ./config/config.ini : learning rate, data_dir number of epochs and batch size  
+
+## Training and Testing
+In the projet folder run  'python3 train.py' and 'python3 test.py'
+
+## Results
+Different from the traditional training with each epoch containing all the dataset (seperated with several batch), Here we define 100 epochs and randomly selected  32 images for each epoch, A better score will be obtained
+
+After 100 epoch, generative loss (MSE) is 0.0143 and the classification loss is 0.0751. 
+Using the test data set, we get 8/10 correct prediction (80%) 
+
+# Go further 
+In this projet, we do not use the data augmentation, this methods can be applied in the future to have a better results.    
 

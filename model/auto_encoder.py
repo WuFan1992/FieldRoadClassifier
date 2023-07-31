@@ -44,12 +44,12 @@ class AutoencoderFR(nn.Module):
              nn.ConvTranspose2d(16, 8, kernel_size=3, stride=2, padding=1), # 8x15x15
              nn.Dropout2d(p=0.1),
              nn.ReLU(True),
-             nn.ConvTranspose2d(8, 4, kernel_size=3, stride=1, padding=1),  # 4x30x30
-             nn.Upsample(scale_factor=2),
+             nn.ConvTranspose2d(8, 4, kernel_size=3, stride=1, padding=1),  
+             nn.Upsample(scale_factor=2),                                  # 4x30x30
              nn.Dropout2d(p=0.1),
              nn.ReLU(True),
-             nn.ConvTranspose2d(4,3, kernel_size=3, stride=1, padding=1),  #3x60x60
-             nn.Upsample(scale_factor=2),     
+             nn.ConvTranspose2d(4,3, kernel_size=3, stride=1, padding=1),  
+             nn.Upsample(scale_factor=2),                                 #3x60x60
              )
          
      def forward(self, x):
