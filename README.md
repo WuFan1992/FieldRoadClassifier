@@ -17,8 +17,7 @@ This project is based on the challenge to classify the road and field with a ver
     
 ## Structure of Projet
 
-'
-FieldRoadClassifier/
+
     dataset/
         fields/
            1.jpg
@@ -29,7 +28,8 @@ FieldRoadClassifier/
            2.jpg
            ...
         test_images/
-        
+           1.jpg
+           ...
     cache/
         fr_classifier.pkl
     config/
@@ -41,7 +41,7 @@ FieldRoadClassifier/
     test.py
     train.py
     
-'
+
 A pretrained model can be found in /cache/ which give the same results as the following "Results" parts shows 
 
 ## Set Environment
